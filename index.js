@@ -4,9 +4,11 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const QuestionRoute = require("./routes/surveyQuestion");
 const SessionRoute = require("./routes/surveySession");
+const cors= require("cors");
 
 dotenv.config();
 app.use(express.json());
+app.use(cors());
 mongoose.connect(process.env.MONGO_URL,{
   useNewUrlParser:true,
   useUnifiedTopology:true,

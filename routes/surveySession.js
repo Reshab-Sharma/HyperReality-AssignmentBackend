@@ -8,7 +8,7 @@ router.post("/Add",async(req,res)=>{
             isCompleted:req.body.isCompleted,
             feedback: req.body.feedback,
         })
-        const SurveyQuestion = await newQuestion.save();
+        const SurveyQuestion = await newQuestion.save(); 
         res.status(200).json(SurveyQuestion);
     }catch(e){ 
         res.status(500).json(e);

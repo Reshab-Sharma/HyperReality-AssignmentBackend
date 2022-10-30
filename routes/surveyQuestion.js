@@ -18,8 +18,13 @@ router.get("/", async(req, res)=>{
  let page = req.query;
  let currentPage = page.page;
  let limit=1;
-if(!currentPage) currentPage = 1;
-const skip=(currentPage - 1) * 1;
+if(!currentPage) currentPage = 0;
+let skip;
+if(currentPage === 0){
+    skip = 0;
+}else{
+    skip = currentPage * 1;
+}
  const questions = await SurveyQuestions.find();
 const question = await SurveyQuestions.find().skip(skip).limit(limit);
  res.send({currentPage:currentPage,limit:limit,totalPage:questions?.length,question:question});
