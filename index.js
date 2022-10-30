@@ -4,7 +4,6 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const QuestionRoute = require("./routes/surveyQuestion");
 const SessionRoute = require("./routes/surveySession");
-const port = process.env.Port;
 
 dotenv.config();
 app.use(express.json());
@@ -15,6 +14,6 @@ mongoose.connect(process.env.MONGO_URL,{
 app.use("/api/Question",QuestionRoute);
 app.use("/api",SessionRoute);
  
-app.listen(port,()=>{ 
+app.listen(process.env.Port || 5000,()=>{ 
     console.log("Backend is running"); 
 })
